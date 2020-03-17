@@ -5,14 +5,14 @@ service: whitepaper-serverless-pdf2images
 provider:
  name: aws
  runtime: nodejs12.x
+ cfnRole: arn:aws:iam::330026732917:role/cfnRole
 
 functions:
  upload:
   handler: handler.hello
   events: 
    - s3:
-      bucket: assets.whitepaper-staging.com
+      bucket: testbucket
       event: s3:ObjectCreated:*
       rules:
         - suffix: .pdf
-      existing: true
